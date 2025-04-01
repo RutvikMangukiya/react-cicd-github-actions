@@ -7,7 +7,7 @@ on: [push, workflow_dispatch]
 #   - workflow_dispatch
 
 jobs:
-    greet:
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
