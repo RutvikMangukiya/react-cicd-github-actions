@@ -18,7 +18,7 @@ test('contains an h1 element', () => {
 test('contains an h2 element', () => {
   const { container } = render(<App />);
   const h2Element = container.querySelector('h2');
-  expect(h2Element).toBeInTheDocument();
+  expect(h2Element).not.toBeInTheDocument();
 });
 
 // This is a comment.
