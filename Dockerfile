@@ -22,7 +22,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built react app to the NGINX HTML directory
-COPY --from=build /app/build .
+COPY --from=build /app/node_modules .
 
 # Expose port 80
 EXPOSE 80
