@@ -19,10 +19,10 @@ FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html
 
-RUN rm -f /usr/share/nginx/html/*
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built react app to the NGINX HTML directory
-COPY --from=build /app/dist .
+COPY --from=build /app/build .
 
 # Expose port 80
 EXPOSE 80
