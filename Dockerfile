@@ -14,6 +14,8 @@ COPY . .
 # Build the react app
 RUN npm run build
 
+CMD [ "npm", "run", "dev"]
+
 # Use NGINX as the base image  for serving the built app
 #FROM nginx:alpine
 
