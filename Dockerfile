@@ -17,9 +17,9 @@ RUN npm run build
 # Use NGINX as the base image  for serving the built app
 FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /var/www/html
 
-RUN rm -rf /usr/share/nginx/html/*
+## RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built react app to the NGINX HTML directory
 COPY --from=build /app/node_modules .
