@@ -16,7 +16,7 @@ jobs:
               run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
             - name: Build Docker Image
-              run: docker build -t rutvik/react-cicd-app .
+              run: docker build -t rutvikmangukiya/react-cicd-github-actions .
 
             - name: Publish image to Docker Hub
               run: docker push rutvikmangukiya/react-cicd-github-actions:latestV
