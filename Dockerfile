@@ -15,17 +15,17 @@ COPY . .
 RUN npm run build
 
 # Use NGINX as the base image  for serving the built app
-FROM nginx:alpine
+#FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
+#WORKDIR /var/www/html
 
-RUN rm -rf *
+#RUN rm -rf *
 
 # Copy the built react app to the NGINX HTML directory
-COPY --from=build /app/dist .
+#COPY --from=build /app/dist .
 
 # Expose port 80
-EXPOSE 80
+#EXPOSE 80
 
 # Start NGINX
-CMD [ "nginx",  "-g", "daemon off;" ]
+#CMD [ "nginx",  "-g", "daemon off;" ]
