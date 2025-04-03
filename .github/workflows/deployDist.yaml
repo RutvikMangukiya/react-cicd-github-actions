@@ -3,12 +3,12 @@ name: Deploy Dist
 #on: [push, workflow_dispatch]
 
 on:
-  push:
-    branches:
-      - main
-      - 'feature/**'
-    paths-ignore:
-      - README.md
+#  push:
+#    branches:
+#      - main
+#      - 'feature/**'
+#    paths-ignore:
+#      - README.md
   workflow_dispatch:
 
 jobs:
