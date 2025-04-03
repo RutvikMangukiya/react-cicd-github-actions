@@ -33,4 +33,4 @@ jobs:
         run: docker rm -f reactContainer
 
       - name: Run Docker Container
-        run: docker run -d -p 3000:80 --name reactContainer rutvikmangukiya/react-cicd-github-actions
+        run: docker run -d -p 5173:80 --name reactContainer rutvikmangukiya/react-cicd-github-actions
