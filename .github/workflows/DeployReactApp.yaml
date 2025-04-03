@@ -1,39 +1,39 @@
-name: Deploy React to Github pages
+name: Deploy React to Github pages   # Workflow name
 
 on:
   push:
     branches:
-      - main
-      - 'feature/**'
+      - main           # Trigger on push to 'main' branch
+      - 'feature/**'   # Trigger on push to any 'feature' branch
     paths-ignore:
-      - README.md
-  workflow_dispatch:
+      - README.md      # Ignore changes to README.md
+  workflow_dispatch:   # Allow manual triggering from GitHub Actions UI
 
 jobs:
     test:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest              # Use the latest Ubuntu runner
         steps:
-            - name: Get Code
+            - name: Get Code                # Checkout repository code
               uses: actions/checkout@v4
             
-            - name: Install Node 20
-              uses: actions/setup-node@v4
+            - name: Install Node 20         # Set up Node.js environment
+              uses: actions/setup-node@v4   
               with:
                 node-version: 20
             
-            - name: print node version
+            - name: print node version      # Verify installed Node.js version
               run: node -v
 
-            - name: Cache Dependencies
+            - name: Cache Dependencies      # Cache dependencies to speed up future runs
               uses: actions/cache@v4
               with:
                 path: ~/.npm
                 key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}  # linux-node-unique.val
             
-            - name: Install Dependencies 
+            - name: Install Dependencies    # Install project dependencies
               run: npm ci
 
-            - name: Run Tests
+            - name: Run Tests               # Execute test suite
               run: npm run test
 
     build:
