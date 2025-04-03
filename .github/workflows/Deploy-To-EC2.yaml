@@ -19,7 +19,7 @@ jobs:
               run: docker build -t rutvikmangukiya/react-cicd-github-actions .
 
             - name: Publish image to Docker Hub
-              run: docker push rutvikmangukiya/react-cicd-github-actions:latestV
+              run: docker push rutvikmangukiya/react-cicd-github-actions:latest
 
     deploy:
         needs: build
@@ -27,7 +27,7 @@ jobs:
 
         steps: 
             - name: Pull image from docker hub
-              run: docker pull rutvikmangukiya/react-cicd-github-actions:latestV
+              run: docker pull rutvikmangukiya/react-cicd-github-actions:latest
 
             - name: Delete Old Cpntainer 
               run: docker rm -f reactContainer
