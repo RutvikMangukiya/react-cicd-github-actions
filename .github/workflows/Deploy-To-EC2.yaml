@@ -1,0 +1,36 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - deploy-to-ec2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Login To Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: docker build -t rutvikmangukiya/react-cicd-github-actions .
+
+      - name: Publish image to Docker Hub
+        run: docker push rutvikmangukiya/react-cicd-github-actions:latest
+
+  deploy:
+    needs: build
+    runs-on: aws-ec2
+
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull rutvikmangukiya/react-cicd-github-actions:latest
+
+      - name: Delete Old Cpntainer
+        run: docker rm -f reactContainer
+
+      - name: Run Docker Container
+        run: docker run -d -p 3000:80 --name reactContainer rutvikmangukiya/react-cicd-github-actions
