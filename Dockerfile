@@ -5,8 +5,8 @@ FROM node:20 as build
 WORKDIR /app
 
 # Copy package.json and package-lock.json and install dependencies
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json .
+RUN npm install
 
 # Copy app files
 COPY . .
@@ -14,9 +14,12 @@ COPY . .
 # Build the react app
 RUN npm run build
 
-EXPOSE 5173
-
-CMD [ "npm", "run", "dev"]
+FROM nginx:1.23-alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf *
+COPY --from=build /app/build .
+EXPOSE 80
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
 
 # Use NGINX as the base image  for serving the built app
 #FROM nginx:alpine
