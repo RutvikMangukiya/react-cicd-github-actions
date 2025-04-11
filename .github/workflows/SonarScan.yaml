@@ -3,7 +3,7 @@ name: Sonar Cloud Scan  # Workflow name
 on:
   push:
     branches:
-      - deploy-to-ec2  # Trigger on push to 'main' branch
+      - main  # Trigger on push to 'main' branch
   pull_request:
     types: [opened, synchronize, reopened]  # Trigger on PR open, sync, or reopen
 

@@ -1,13 +1,13 @@
 name: Deploy React to Github pages   # Workflow name
 
 on:
-    push:
-  #   branches:
-  #     - main           # Trigger on push to 'main' branch
-  #     - 'feature/**'   # Trigger on push to any 'feature' branch
-  #   paths-ignore:
-  #     - README.md      # Ignore changes to README.md
-  # workflow_dispatch:   # Allow manual triggering from GitHub Actions UI
+  push:
+    branches:
+      - main           # Trigger on push to 'main' branch
+      - 'feature/**'   # Trigger on push to any 'feature' branch
+    paths-ignore:
+      - README.md      # Ignore changes to README.md
+  workflow_dispatch:   # Allow manual triggering from GitHub Actions UI
 
 jobs:
     test:
